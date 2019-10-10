@@ -12,6 +12,7 @@ class WeuiController extends Controller
 	// 首页
     public function index(Request $request)
     {
+//        dd(session()->get('userinfo'));
     	// ==================商品===========
     	// 精选 推荐
     	$goodshow = Csgoods::where(['is_show'=>1])->get();

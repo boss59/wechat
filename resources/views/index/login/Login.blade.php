@@ -35,7 +35,7 @@
             @php echo $errors->first('userpwd')@endphp   
             </div>
             <input type="submit" class="login-btn common-div" value="登陆">
-            <a href="javascript:;" class="login-oth-btn common-div">微信登陆</a>
+            <a href="/weui/userinfo" class="login-oth-btn common-div">微信登陆</a>
             <a href="javascript:;" class="login-oth-btn common-div">QQ登陆</a>
         </form>
     </div>
@@ -54,7 +54,6 @@
 </script>
 <script src="js/jquery-weui.js"></script>
 <script>
-
 </script>
 </body>
 </html>

@@ -102,5 +102,10 @@ Route::group(['middleware'=>['CheckLogin']],function(){
 	//     =====  中间件  ===========
 	// Route::any('/','indexcontroller@index')->middleware(["checkLogin"]); 第一种 方式
 });
+// 第三方登录 微信
+	Route::any('/wechat/wechat','wechat\WachatController@wechat');
+	Route::any('/wechat/index','wechat\WachatController@index');
+	Route::any('/weui/userinfo','wechat\WachatController@userinfo');
+	Route::any('/weui/wechatcode','wechat\WachatController@wechatcode');
 
 
