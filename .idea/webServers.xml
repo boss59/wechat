@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="be92bdba-82a6-4405-a5f6-e0e8edd3b4c4" name="阿里云" url="http://39.105.75.12">
+        <fileTransfer host="39.105.75.12" port="22" rootFolder="/data/wwwroot/default/wechat" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

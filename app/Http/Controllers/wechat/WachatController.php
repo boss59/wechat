@@ -81,19 +81,5 @@ class WachatController extends Controller
             return redirect('/weui/index');
         }
     }
-    // 方法
-    public function get_open(){
-        // 第三步 刷新access_token（如果需要）
-        // $access_token = file_get_contents("https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=wxc17d07531889d3ff&grant_type=refresh_token&refresh_token=$refresh_token");//
-        // dd($access_token);
-        
-        // 第四步：拉取用户信息(需scope为 snsapi_userinfo)
-        $info = file_get_contents("https://api.weixin.qq.com/sns/userinfo?access_token=".$userinfo['access_token']."&openid=".$userinfo['openid']."&lang=zh_CN");
-        // dd($info);
-        $userinfo = json_decode($info,1);
-        dd($userinfo);
 
-        // 附：检验授权凭证（access_token）是否有效
-        // file_get_contents("https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID");
-    }
 }
