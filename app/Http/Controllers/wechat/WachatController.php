@@ -4,7 +4,6 @@ namespace App\Http\Controllers\wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Weui\OpenModels;
 use App\Weui\CsUser;
 class WachatController extends Controller
 {
