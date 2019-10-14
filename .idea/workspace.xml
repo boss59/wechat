@@ -2,21 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eca29f44-f830-4cfd-bf62-e8af81896630" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Chat/Tag.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/CurlController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/FansController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/SignController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Weui/SignModels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/wechat/fans.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/wechat/sign.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/wechat/signindex.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/wechat/updatesign.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/WachatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/WachatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/brand/brandlist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/brand/brandlist.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/layui.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layui.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -93,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="118" column="54" selection-start-line="118" selection-start-column="54" selection-end-line="118" selection-end-column="54" />
+            <state relative-caret-position="413">
+              <caret line="127" column="4" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -331,15 +316,16 @@
       <workItem from="1570948602353" duration="8441000" />
       <workItem from="1571031205923" duration="250000" />
       <workItem from="1571031472320" duration="100000" />
-      <workItem from="1571031598365" duration="2386000" />
+      <workItem from="1571031598365" duration="3836000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104048000" />
+    <option name="totallyTimeSpent" value="105498000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19235925" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -355,7 +341,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.7875354" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -650,8 +636,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="118" column="54" selection-start-line="118" selection-start-column="54" selection-end-line="118" selection-end-column="54" />
+        <state relative-caret-position="413">
+          <caret line="127" column="4" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
         </state>
       </provider>
     </entry>
