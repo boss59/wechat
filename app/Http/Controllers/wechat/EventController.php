@@ -4,10 +4,16 @@ namespace App\Http\Controllers\wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Chat\Tag;
 class EventController extends Controller
 {
-    
+    public $Tag;
+    public $request;
+    public function __construct(Tag $tag,Request $request)
+    {
+        $this->tag = $tag;
+        $this->request = $request;
+    }
     /**
      * 接收 微信消息
      * @param Request $request
