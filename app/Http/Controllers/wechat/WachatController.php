@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Weui\CsUser;
 class WachatController extends Controller
 {
-    public function wechat()
+    // 获取 token
+    public static function wechat()
     {
         // dd($value);
         if(\Cache::has('access_token')){
@@ -24,20 +25,30 @@ class WachatController extends Controller
     public function index(Request $request)
     {
         $info = self::wechat();
-        $user = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=$info&next_openid=");
+        $user = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$info."&next_openid=");
         $user = json_decode($user,1);
         // $data = $user['data'];
         // $openid = $data['openid'];
         // dd($openid);
         $infos = [];
         foreach($user['data']['openid'] as $k=>$v){
-            $userinfo = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/info?access_token=$info&openid=$v&lang=zh_CN");
+            $userinfo = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$info."&openid=".$v."&lang=zh_CN");
             $infos[] = json_decode($userinfo,1);
         }
-        // dd($infos);
+         dd($infos);
         return view('index.wechat.index',['info'=>$infos]);  
     }
-    // 授权
+    // 获取 openid 方法
+    public static function openid(Request $request)
+    {
+        $info = self::wechat();
+        $user = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$info."&next_openid=");
+        $user = json_decode($user,1);
+        $data = $user['data'];
+        $openid = $data['openid'];
+        return $openid;
+    }
+    // 用户授权
     public function userinfo()
     {
         //$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -52,7 +63,7 @@ class WachatController extends Controller
     {
         $code = request()->input('code'); // 得到code
         // dd($code);
-        $token = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=".env('WECGAT_APPID')."&secret=".env('WECHET_SECRET')."&code=$code&grant_type=authorization_code");
+        $token = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=".env('WECGAT_APPID')."&secret=".env('WECHET_SECRET')."&code=".$code."&grant_type=authorization_code");
         $userinfo = json_decode($token,1);
 //        dd($userinfo);
         $openid=$userinfo['openid'];
@@ -80,5 +91,4 @@ class WachatController extends Controller
             return redirect('/weui/index');
         }
     }
-
 }

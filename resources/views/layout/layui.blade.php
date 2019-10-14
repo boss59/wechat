@@ -11,6 +11,8 @@
   <script src="{{ asset('layui/layui.js') }}"></script>
   <link rel="stylesheet" type="text/css" href="{{ asset('layui/css/layui.mobile.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('layui/css/layui.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.css') }}">
   <script src="{{ asset('js/img.js') }}"></script>
 </head>
 <body class="layui-layout-body">
@@ -91,6 +93,22 @@
             管理员列表</a></dd>
           </dl>
         </li>
+
+        {{-- 用户管理 --}}
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="label-info" href="javascript:;">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;
+            用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/wechat/signindex">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;&nbsp;
+                标签列表</a></dd>
+            <dd><a href="/wechat/fans">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;&nbsp;
+                粉丝列表</a></dd>
+          </dl>
+        </li>
+
         <li class="layui-nav-item layui-nav-itemed">
           <a class="label label-info" href="javascript:;">
             <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>&nbsp;&nbsp;
@@ -131,9 +149,9 @@
           </dl>
         </li>
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="label-info" href="javascript:;">
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;
-          角色管理</a>
+          <a class="label label-info" href="javascript:;">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;
+            角色管理</a>
           <dl class="layui-nav-child">
             <dd><a href="/admin/roleadd">
             <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span>&nbsp;&nbsp;
@@ -162,7 +180,7 @@
   <div class="layui-footer" >
     <!-- 底部固定区域 -->
    <p align="center">
-        <marquee><h2><font style color='blue'>每一个不甘离开，都是为了最后的归来！！！</font></h2></marquee>
+        <marquee><h2><font color="blue">每一个不甘离开，都是为了最后的归来！！！</font></h2></marquee>
    </p>
   </div>
 </div>
