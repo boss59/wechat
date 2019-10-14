@@ -125,7 +125,7 @@ Route::group(['middleware'=>['CheckLogin']],function(){
 
     Route::any('/weui/curlget','wechat\WachatController@curlget');
     Route::any('/weui/curlpost','wechat\WachatController@curlpost');
-    
+
     // 接收微信消息
     Route::any('/wechat/event','wechat\EventController@event');
 
