@@ -43,6 +43,7 @@
                 <td colspan="8" align="center">
                     <input type="submit"  class="btn btn-primary sign" value="立即提交">
                     <input type="button"  class="btn btn-danger" value="取消标签" id="but">
+                    <input type="button"  class="btn btn-danger" value="模板消息" id="push">
                 </td>
             </tr>
         @else
@@ -71,6 +72,24 @@
                     data:{openid:arr,id:id},//要传输的数据
                     success:function(res){ //成功之后回调的方法
 
+                    }
+                })
+            })
+            $(document).on('click','#push',function(){
+                var odj = $('[name="openid_list[]"]:checked');
+                var arr = new Array();// 定义数组
+                // 循环 odj
+                $.each(odj,function(){
+                    var id = $(this).val();
+                    arr.push(id);// 把id 放到数组中
+                });
+                $.ajax({
+                    url:"/wechat/pushmsg",//请求地址
+                    type:'get',//请求的类型
+                    dataType:'json',//返回的类型
+                    data:{openid:arr},//要传输的数据
+                    success:function(res){ //成功之后回调的方法
+                        alert("发送成功");
                     }
                 })
             })

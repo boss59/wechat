@@ -6,19 +6,29 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\wechat\CurlController;//请求
 use App\Http\Controllers\wechat\WachatController;//token
+use App\Chat\Tag;
 class FansController extends Controller
 {
+    public $Tag;
+    public $request;
+    public function __construct(Tag $tag,Request $request)
+    {
+        $this->tag = $tag;
+        $this->request = $request;
+    }
     // 粉丝列表
     public function fans(Request $request)
     {
         $id = $request->input('id');
         // 获取 asess_token
         $token = WachatController::wechat();
+        //dd($token);
         // 获取open_id
         $url = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$token."&next_openid=";
         // 获取 所有 粉丝
         $getsign = CurlController::curlget($url);
         $fans = json_decode($getsign, true, JSON_UNESCAPED_UNICODE);
+        //dd($fans);
         // 获取 所有 粉丝 信息
         $data = [];
         foreach($fans['data']['openid'] as $k=>$v){
@@ -26,8 +36,7 @@ class FansController extends Controller
             $getsign = CurlController::curlget($url);
             $data[] = json_decode($getsign, true, JSON_UNESCAPED_UNICODE);
         }
-        // 所属 标签
-//        $this->indexsign($fans['data']['openid']);
+        //dd($data);
         return view('backend.wechat.fans',['data'=>$data,'id'=>$id]);
     }
     // 为粉丝打标签
@@ -111,6 +120,32 @@ class FansController extends Controller
         ];
 
         $arr = json_encode($arr, JSON_UNESCAPED_UNICODE);
+        $fans = CurlController::curlpost($url,$arr);
+        $data = json_decode($fans, true, JSON_UNESCAPED_UNICODE);
+        dd($data);
+    }
+    // 模板消息
+    public function pushmsg(Request $request)
+    {
+        $data = $request->input('openid');
+        $data=implode($data,',');
+        $token = WachatController::wechat();
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='.$token;
+        $data = [
+            'touser'=>$data,
+            'template_id'=>'fp9I6NJ0l9wSMznGNAtc90sNt7rclx--dzrDBl-ohyQ',
+            'data'=>[
+                'keyword1'=>[
+                    'value'=>'用户',
+                    'color'=>''
+                ],
+                'keyword2'=>[
+                    'value'=>'洗发水',
+                    'color'=>''
+                ]
+            ]
+        ];
+        $arr = json_encode($data, JSON_UNESCAPED_UNICODE);
         $fans = CurlController::curlpost($url,$arr);
         $data = json_decode($fans, true, JSON_UNESCAPED_UNICODE);
         dd($data);

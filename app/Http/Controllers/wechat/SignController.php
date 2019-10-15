@@ -6,8 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\wechat\CurlController;//请求
 use App\Http\Controllers\wechat\WachatController;//token
+use App\Chat\Tag;
 class SignController extends Controller
 {
+    public $Tag;
+    public $request;
+    public function __construct(Tag $tag,Request $request)
+    {
+        $this->tag = $tag;
+        $this->request = $request;
+    }
     // 标签添加
     public function sign(Request $request)
     {
@@ -87,5 +95,25 @@ class SignController extends Controller
 
         }
         return view('backend.wechat.updatesign',['arr'=>$arr['tag']]);
+    }
+    // 根据 标签 发消息
+    public function signmsg()
+    {
+        $req = $this->request->all();
+        $token = WachatController::wechat();
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token='.$token;
+        $data = [
+            'filter'=> [
+                "is_to_all"=>false,
+                "tag_id"=>$req['id'],
+            ],
+            'text'=>[
+                'content'=>'一叶知秋'
+            ],
+            'msgtype'=>'text'
+        ];
+        $re = CurlController::curlpost($url,json_encode($data,JSON_UNESCAPED_UNICODE));
+        $result = json_decode($re,1);
+        dd($result);
     }
 }

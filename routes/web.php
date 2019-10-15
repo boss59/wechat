@@ -109,12 +109,15 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     Route::any('/wechat/signindex','wechat\SignController@signindex');//表签列表
     Route::any('/wechat/delsign','wechat\SignController@delsign');//表签删除
     Route::any('/wechat/updatesign','wechat\SignController@updatesign');//表签修改
+    Route::any('/wechat/signmsg','wechat\SignController@signmsg');//消息
+
     // 粉丝 管理
     Route::any('/wechat/fans','wechat\FansController@fans');//粉丝列表
     Route::any('/wechat/addsign','wechat\FansController@addsign');//加标签
     Route::any('/wechat/tagsign','wechat\FansController@tagsign');//查看所属标签
     Route::any('/wechat/tagfans','wechat\FansController@tagfans');//当前标签下的粉丝
     Route::any('/wechat/delfans','wechat\FansController@delfans');//取消当前标签下的粉丝
+    Route::any('/wechat/pushmsg','wechat\FansController@pushmsg');//消息
 
 });
 // 第三方登录 微信

@@ -17,4 +17,5 @@ class CateController extends Controller
         $list = CsCate::createTreeBySon($catData);
     	return view('index.cate',['nav'=>$nav,'list'=>$list]);
     }
+    
 }

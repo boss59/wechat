@@ -10,14 +10,15 @@ class WachatController extends Controller
     // 获取 token
     public static function wechat()
     {
+//        \Cache::forget('access_token');die;
         // dd($value);
-        if(\Cache::has('access_token')){
+        if(\Cache::has('token')){
             $value = \Cache::get('access_token');
         }else{
             $info = file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxc17d07531889d3ff&secret=bbed9e4037fe1536b8ff66d9493c16dc');
-            $value = json_decode($info);
-            \Cache::put('access_token', $value->access_token, $value->expires_in);
-            return $value->access_token;
+            $value = json_decode($info,true);
+            \Cache::put('access_token', $value["access_token"], $value["expires_in"]);
+            return $value["access_token"];
         }
         return $value;
     }
@@ -35,7 +36,6 @@ class WachatController extends Controller
             $userinfo = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$info."&openid=".$v."&lang=zh_CN");
             $infos[] = json_decode($userinfo,1);
         }
-         dd($infos);
         return view('index.wechat.index',['info'=>$infos]);  
     }
     // 获取 openid 方法
