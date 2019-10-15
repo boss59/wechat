@@ -40,4 +40,13 @@ class CurlController extends Controller
         $sign = json_decode($getsign, true, JSON_UNESCAPED_UNICODE);
         return $sign;
     }
+    // 粉丝信息
+    public function getuser($openid)
+    {
+        $token = WachatController::wechat();
+        $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
+        $re = file_get_contents($url);
+        $result = json_decode($re,1);
+        return $result;
+    }
 }

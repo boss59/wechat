@@ -29,13 +29,21 @@ class EventController extends Controller
         $xml_obj = simplexml_load_string($info,'SimpleXMLElement',LIBXML_NOCDATA);
         // 强制转为数组
         $xml = (array)$xml_obj;
-        $msg = "我爱你！";
-        if ($xml['Content'] == '1'){
-            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[有需要服务的吗？]]></Content></xml>";
-        }
-        if ($xml['Content'] == '521'){
+        // 关注 回复
+        if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscrbe'){
+            $info = CurlController::getinfo();
+            $msg = '你好'.$info['nickname'].',欢迎关注我的公众号';
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
-
+        // 普通消息 回复
+        if ($xml['MsgType'] == 'event' && $xml['Content'] == '1'){
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[有需要服务的吗？]]></Content></xml>";
+        }else{
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[只不过是从头再来罢了]]></Content></xml>";
+        }
+        $msg = "我爱你！";
+        if ($xml['MsgType'] == 'event' && $xml['Content'] == '521'){
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }
     }
 }
