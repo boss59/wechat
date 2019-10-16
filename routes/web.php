@@ -118,6 +118,7 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     Route::any('/wechat/tagfans','wechat\FansController@tagfans');//当前标签下的粉丝
     Route::any('/wechat/delfans','wechat\FansController@delfans');//取消当前标签下的粉丝
     Route::any('/wechat/pushmsg','wechat\FansController@pushmsg');//消息
+    Route::any('/wechat/testag','wechat\SignController@testag');//测试
 
 });
 // 第三方登录 微信
@@ -131,5 +132,8 @@ Route::group(['middleware'=>['CheckLogin']],function(){
 
     // 接收微信消息
     Route::any('/wechat/event','wechat\EventController@event');
+    // 上传 素材
+    Route::any('/wechat/resource','wechat\ResourceController@resource');
+    Route::any('/wechat/resource_do','wechat\ResourceController@resource_do');
 
 

@@ -116,4 +116,11 @@ class SignController extends Controller
         $result = json_decode($re,1);
         dd($result);
     }
+    // 粉丝
+    public function testag()
+    {
+        $data = 'oWzRuwed2hhZ0PzuyKpXtvom3zHo';
+        $info = CurlController::fans_list();
+        dd($info);
+    }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\wechat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Chat\Tag;
+use App\Http\Controllers\wechat\CurlController;//请求
+use App\Http\Controllers\wechat\WachatController;//token
 class EventController extends Controller
 {
     public $Tag;
@@ -30,19 +32,22 @@ class EventController extends Controller
         // 强制转为数组
         $xml = (array)$xml_obj;
         // 关注 回复
-        if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscrbe'){
-            $info = CurlController::getinfo();
+        if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscribe'){
+            $info = CurlController::getuser($xml['FromUserName']);
             $msg = '你好'.$info['nickname'].',欢迎关注我的公众号';
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
         // 普通消息 回复
-        if ($xml['MsgType'] == 'event' && $xml['Content'] == '1'){
+        if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[有需要服务的吗？]]></Content></xml>";
+        }else if ($xml['MsgType'] == 'text' && $xml['Content'] == '521'){
+            $msg = "我爱你！";
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }else if($xml['MsgType'] == 'text' && $xml['Content'] == '6'){
+            $media_id ="tyXhwlo9Gh-761o1Fb6savT_RIhhLMcYXDpwUe8aJllFE2wNwMhwdEF7hHEoNd7u";
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[music]]></MsgType><Music><Title><![CDATA[想象]]></Title><Description><![CDATA[DESCRIPTION]]></Description><MusicUrl><![CDATA[MUSIC_Url]]></MusicUrl><HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl><ThumbMediaId><![CDATA[".$media_id."]]></ThumbMediaId></Music></xml>";
         }else{
-            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[只不过是从头再来罢了]]></Content></xml>";
-        }
-        $msg = "我爱你！";
-        if ($xml['MsgType'] == 'event' && $xml['Content'] == '521'){
+            $msg = "纵情山河万里，肆意九州五岳！！！";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
     }

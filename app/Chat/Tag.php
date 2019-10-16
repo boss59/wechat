@@ -3,6 +3,24 @@ namespace App\Chat;
 use Illuminate\Support\Facades\Cache;
 class Tag {
     /**
+     * 获取 token
+     * @return mixed
+     */
+    public function get_access_token()
+    {
+        //\Cache::forget('access_token');die;
+        // dd($value);
+        if(Cache::has('access_token')){
+            $value = Cache::get('access_token');
+        }else{
+            $info = file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxc17d07531889d3ff&secret=bbed9e4037fe1536b8ff66d9493c16dc');
+            $value = json_decode($info,true);
+            Cache::put('access_token', $value["access_token"], $value["expires_in"]);
+            return $value["access_token"];
+        }
+        return $value;
+    }
+    /**
      * 公众号标签列表
      * @return mixed
      */
