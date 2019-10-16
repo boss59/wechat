@@ -93,10 +93,23 @@
             管理员列表</a></dd>
           </dl>
         </li>
-
+        {{-- 素材管理 --}}
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="label label-info" href="javascript:;">
+            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;&nbsp;
+            素材 管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/wechat/resource_list">
+                <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span>&nbsp;&nbsp;
+                素材展示</a></dd>
+            <dd><a href="/wechat/resource">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;&nbsp;
+                素材添加</a></dd>
+          </dl>
+        </li>
         {{-- 用户管理 --}}
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="label-info" href="javascript:;">
+          <a class="label label-info" href="javascript:;">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;
             用户管理</a>
           <dl class="layui-nav-child">

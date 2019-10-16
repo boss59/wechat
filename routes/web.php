@@ -120,6 +120,15 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     Route::any('/wechat/pushmsg','wechat\FansController@pushmsg');//消息
     Route::any('/wechat/testag','wechat\SignController@testag');//测试
 
+    // 上传 素材
+    Route::any('/wechat/resource','wechat\ResourceController@resource');
+    Route::any('/wechat/resource_do','wechat\ResourceController@resource_do');
+    // 添加到数据库中
+    Route::any('/wechat/type_do','wechat\ResourceController@type_do');
+    // 展示 素材
+    Route::any('/wechat/resource_list','wechat\ResourceController@resource_list');
+    Route::any('/wechat/aaa','wechat\ResourceController@aaa');
+
 });
 // 第三方登录 微信
 	Route::any('/wechat/wechat','wechat\WachatController@wechat');
@@ -132,8 +141,7 @@ Route::group(['middleware'=>['CheckLogin']],function(){
 
     // 接收微信消息
     Route::any('/wechat/event','wechat\EventController@event');
-    // 上传 素材
-    Route::any('/wechat/resource','wechat\ResourceController@resource');
-    Route::any('/wechat/resource_do','wechat\ResourceController@resource_do');
+
+
 
 
