@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Chat\Tag;
 use App\Http\Controllers\wechat\CurlController;//请求
 use App\Http\Controllers\wechat\WachatController;//token
+use App\Weui\UserintModels;
 class EventController extends Controller
 {
     public $Tag;
@@ -34,6 +35,12 @@ class EventController extends Controller
         // 关注 回复
         if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscribe'){
             $info = CurlController::getuser($xml['FromUserName']);
+            UserintModels::insert([
+                'openid'=>$info['openid'],
+                'name'=>$info['nickname'],
+                'add_time'=>time(),
+                'integral'=>'0'
+            ]);
             $msg = '你好'.$info['nickname'].',欢迎关注我的公众号';
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }

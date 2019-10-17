@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eca29f44-f830-4cfd-bf62-e8af81896630" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/ResourceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/ResourceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wechat/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wechat/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wechat/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wechat/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,75 +30,12 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="45" column="12" selection-start-line="45" selection-end-line="45" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="149" selection-start-line="149" selection-end-line="149" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/CurlController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-696">
-              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-              <folding>
-                <element signature="e#47#75#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/ResourceController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="99" column="8" lean-forward="true" selection-start-line="99" selection-start-column="8" selection-end-line="100" selection-end-column="33" />
-              <folding>
-                <element signature="e#47#75#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
-              <folding>
-                <element signature="e#47#75#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="35" column="66" lean-forward="true" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/FansController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="54" column="68" lean-forward="true" selection-start-line="52" selection-start-column="8" selection-end-line="54" selection-end-column="68" />
+            <state relative-caret-position="341">
+              <caret line="40" column="35" lean-forward="true" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
               <folding>
                 <element signature="e#47#75#0#PHP" expanded="true" />
               </folding>
@@ -153,7 +87,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/SignController.php" />
         <option value="&lt;be92bdba-82a6-4405-a5f6-e0e8edd3b4c4&gt;/app/Http/Controllers/wechat/CurlController.php" />
         <option value="$PROJECT_DIR$/config/filesystems.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" />
         <option value="$PROJECT_DIR$/app/Weui/Resource.php" />
         <option value="$PROJECT_DIR$/resources/views/wechat/list.blade.php.html" />
         <option value="&lt;be92bdba-82a6-4405-a5f6-e0e8edd3b4c4&gt;/app/Http/Controllers/wechat/EventController.php" />
@@ -165,6 +98,8 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/CurlController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" />
+        <option value="$PROJECT_DIR$/app/Weui/UserintModels.php" />
       </list>
     </option>
   </component>
@@ -262,7 +197,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="110" />
     <option name="y" value="55" />
     <option name="width" value="1750" />
@@ -306,6 +241,12 @@
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="wechat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Weui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
@@ -380,7 +321,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -445,18 +386,19 @@
       <workItem from="1571246528942" duration="27000" />
       <workItem from="1571247236775" duration="440000" />
       <workItem from="1571271485481" duration="991000" />
-      <workItem from="1571273230949" duration="24501000" />
+      <workItem from="1571273230949" duration="24714000" />
+      <workItem from="1571310391461" duration="1498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206579000" />
+    <option name="totallyTimeSpent" value="208290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.23123324" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23123324" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -470,7 +412,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3696884" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.34844193" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="File Transfer" order="12" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -511,22 +453,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/blogs/BlogsController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/wechat/updatesign.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/tag/Tag.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1368" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/index/wechat/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -585,16 +511,6 @@
     <entry file="file://$PROJECT_DIR$/storage/app/public/wechat/image/15712009898309.jpg" />
     <entry file="file://$PROJECT_DIR$/app/Weui/CsCate.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/WachatController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-840">
-          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding>
-            <element signature="e#47#75#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Weui/OrderInfo.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -719,17 +635,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="45" column="12" selection-start-line="45" selection-end-line="45" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
+        <state relative-caret-position="1152">
+          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+          <folding>
+            <element signature="e#47#75#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -743,10 +655,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+        <state relative-caret-position="485">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="45" column="12" selection-start-line="45" selection-end-line="45" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/WachatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-768">
+          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
           </folding>
@@ -755,7 +681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/CurlController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-696">
+        <state relative-caret-position="-768">
           <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
@@ -763,10 +689,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Weui/AreaModels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/weui/WeuiController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Weui/SignModels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Weui/UserintModels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="35" column="66" lean-forward="true" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+        <state relative-caret-position="341">
+          <caret line="40" column="35" lean-forward="true" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+          <folding>
+            <element signature="e#47#75#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
