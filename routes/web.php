@@ -127,7 +127,9 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     Route::any('/wechat/type_do','wechat\ResourceController@type_do');
     // 展示 素材
     Route::any('/wechat/resource_list','wechat\ResourceController@resource_list');
-    Route::any('/wechat/aaa','wechat\ResourceController@aaa');
+    // 资源下载
+    Route::any('/wechat/download','wechat\ResourceController@download');
+
 
 });
 // 第三方登录 微信
@@ -141,6 +143,11 @@ Route::group(['middleware'=>['CheckLogin']],function(){
 
     // 接收微信消息
     Route::any('/wechat/event','wechat\EventController@event');
+    Route::any('/wechat/aaa','wechat\ResourceController@aaa');
+
+    // 自定义菜单
+    Route::any('/wechat/menu','wechat\MenuController@menu');
+
 
 
 

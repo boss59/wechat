@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\wechat\CurlController;//请求
 use App\Weui\Resource;
+use Illuminate\Support\Facades\Storage;
 class ResourceController extends Controller
 {
     // 视图
@@ -18,6 +19,7 @@ class ResourceController extends Controller
     {
         // 接类型
         $type = $request->input('type');
+        dd($type);
         // 接name
         $file_obj =$request->file('resource');
         if (!$request->hasFile('resource')){
@@ -100,7 +102,7 @@ class ResourceController extends Controller
         $data = Resource::get()->toarray();
         return view('wechat.list',['data'=>$data]);
     }
-    // 清除
+    // 清除 接口 调用次数
     public function aaa(){
         $token=CurlController::get_access_token();
         $url="https://api.weixin.qq.com/cgi-bin/clear_quota?access_token=".$token;
@@ -109,5 +111,33 @@ class ResourceController extends Controller
         $res=json_decode($res);
 //        return $res;
         dd($res);
+    }
+    // 资源下载.....视频。。。。。
+    public function download(Request $request)
+    {
+        $data = $request->all();
+        $str=substr($data['path'],22);
+        $token=CurlController::get_access_token();
+        $url = "https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=".$token;
+        $res=CurlController::curlpost($url,json_encode(['media_id'=>$data['media_id']],JSON_UNESCAPED_UNICODE));
+        // 设置 超时参数
+        $opts = array(
+            "http" => array(
+                "method" => "GET",
+                "timeout" => 3 //单位秒
+            ),
+        );
+//        dd($res);
+        // 创建 数据流 上下文
+        $context = stream_context_create($opts);
+        // 创建 数据流 上下文
+        $res=json_decode($res,true,JSON_UNESCAPED_UNICODE);
+        $file_soure = file_get_contents($res['down_url'],false,$context);
+        $data=Storage::put('/wechat/download/'.$str,$file_soure);
+        if (!isset($data)){
+            echo "下载成功";
+        }else{
+            echo "下载失败";
+        }
     }
 }
