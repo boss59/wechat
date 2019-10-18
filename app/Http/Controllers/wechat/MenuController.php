@@ -5,7 +5,6 @@ namespace App\Http\Controllers\wechat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\wechat\CurlController;
-use function PHPSTORM_META\type;//请求
 class MenuController extends Controller
 {
     // 自定义菜单
@@ -40,6 +39,29 @@ class MenuController extends Controller
                 ]
             ]],
 
+            [
+                "name" =>"发图",
+                "sub_button"=>[
+                    [
+                        "type"=>"pic_sysphoto",
+                        "name"=>"系统拍照发图",
+                        "key"=>"rselfmenu_1_0",
+                        "sub_button"=>[]
+                    ],
+                    [
+                        "type"=> "pic_photo_or_album",
+                        "name"=> "拍照或者相册发图",
+                        "key"=> "rselfmenu_1_1",
+                        "sub_button"=> [ ]
+                    ],
+                    [
+                        "type"=> "pic_weixin",
+                        "name"=> "微信相册发图",
+                        "key"=> "rselfmenu_1_2",
+                        "sub_button"=> [ ]
+                    ]
+                ]
+            ],
 
             [
                 "name"=>"商城💎",

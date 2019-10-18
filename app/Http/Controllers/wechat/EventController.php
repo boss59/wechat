@@ -4,19 +4,10 @@ namespace App\Http\Controllers\wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Chat\Tag;
 use App\Http\Controllers\wechat\CurlController;//请求
-use App\Http\Controllers\wechat\WachatController;//token
 use App\Weui\UserintModels;
 class EventController extends Controller
 {
-    public $Tag;
-    public $request;
-    public function __construct(Tag $tag,Request $request)
-    {
-        $this->tag = $tag;
-        $this->request = $request;
-    }
     /**
      * 接收 微信消息
      * @param Request $request
@@ -33,15 +24,30 @@ class EventController extends Controller
         // 强制转为数组
         $xml = (array)$xml_obj;
         // 关注 回复
+        $info = CurlController::getuser($xml['FromUserName']);
+        $user=UserintModels::where('openid','=',$info['openid'])->first();
         if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscribe'){
-            $info = CurlController::getuser($xml['FromUserName']);
-            UserintModels::insert([
-                'openid'=>$info['openid'],
-                'name'=>$info['nickname'],
-                'add_time'=>time(),
-                'integral'=>'0'
-            ]);
+            if(!$user){
+                UserintModels::insert([
+                    'openid'=>$info['openid'],
+                    'name'=>$info['nickname'],
+                    'add_time'=>time(),
+                    'check_time' =>time(),
+                    'integral'=>'0'
+                ]);
+            }
             $msg = '你好'.$info['nickname'].',欢迎关注我的公众号';
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }
+
+        // 签到 回复
+        if ($xml['MsgType'] == 'event' && $xml['EventKey'] == 'V1001_00'){
+            $msg ="签到成功！";
+            UserintModels::where('openid','=',$info['openid'])->update(['check_time'=>time()]);
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }
+        if (!empty($user['check_time'])){
+            $msg ="今日已签到";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
         // 普通消息 回复
@@ -56,6 +62,9 @@ class EventController extends Controller
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '8'){
             $media_id ="6cBYHyFtf74PI2o__6Uo0ErmgRPWevyLcA59PlFqtIhax__SImQlMoJ7pf3WdHXS";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[image]]></MsgType><Image><MediaId><![CDATA[".$media_id."]]></MediaId></Image></xml>";
+        }else if($xml['MsgType'] == 'text' && $xml['Content'] == '9'){
+            $media_id ="mykIkSBhsIL2j3DNMTnCA2JS3GtrD_g076r0EQMofb4";
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[video]]></MsgType><Video><MediaId><![CDATA[".$media_id."]]></MediaId><Title>"."遇见"."</Title><Description>"."我遇见谁会有怎样的对白,我等的人他在多远的未来,我听见风来自地铁和人海,我排著队拿著爱的号码牌"."</Description></Video></xml>";exit;
         }else{
             $msg = "纵情山河万里，肆意九州五岳！！！";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
