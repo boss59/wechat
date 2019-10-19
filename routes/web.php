@@ -130,6 +130,11 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     // 资源下载
     Route::any('/wechat/download','wechat\ResourceController@download');
 
+    // 菜单管理
+    Route::any('/wechat/menu_add','wechat\MenuController@menu_add');
+    Route::any('/wechat/menu_create','wechat\MenuController@menu_create');
+    Route::any('/wechat/array','wechat\MenuController@array');
+
 
 });
 // 第三方登录 微信

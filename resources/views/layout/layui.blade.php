@@ -122,6 +122,21 @@
           </dl>
         </li>
 
+        {{-- 菜单 --}}
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="label label-info" href="javascript:;">
+            <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>&nbsp;&nbsp;
+            菜单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/wechat/menu_add">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;&nbsp;
+                菜单添加</a></dd>
+            <dd><a href="/wechat/menu_list">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;&nbsp;
+                菜单列表</a></dd>
+          </dl>
+        </li>
+
         <li class="layui-nav-item layui-nav-itemed">
           <a class="label label-info" href="javascript:;">
             <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>&nbsp;&nbsp;

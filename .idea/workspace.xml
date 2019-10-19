@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eca29f44-f830-4cfd-bf62-e8af81896630" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/menu/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CateController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/layui.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layui.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,13 +35,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="134" column="71" selection-start-line="134" selection-start-column="71" selection-end-line="134" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+            <state relative-caret-position="-1651">
+              <caret line="11" column="42" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
               <folding>
                 <element signature="e#47#75#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/menu/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="28" column="59" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="59" />
+              <folding>
+                <element signature="e#581#603#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,18 +113,21 @@
         <option value="$PROJECT_DIR$/config/filesystems.php" />
         <option value="$PROJECT_DIR$/app/Weui/Resource.php" />
         <option value="$PROJECT_DIR$/resources/views/wechat/list.blade.php.html" />
-        <option value="$PROJECT_DIR$/resources/views/layout/layui.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/brand/brandadd.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/wechat/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/ResourceController.php" />
         <option value="$PROJECT_DIR$/resources/views/wechat/list.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/CurlController.php" />
         <option value="$PROJECT_DIR$/app/Weui/UserintModels.php" />
         <option value="&lt;be92bdba-82a6-4405-a5f6-e0e8edd3b4c4&gt;/app/Http/Controllers/wechat/CurlController.php" />
         <option value="&lt;be92bdba-82a6-4405-a5f6-e0e8edd3b4c4&gt;/storage/logs/wechat/2019-10-17.log" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/EventController.php" />
         <option value="&lt;be92bdba-82a6-4405-a5f6-e0e8edd3b4c4&gt;/app/Http/Controllers/wechat/EventController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/admin/CateController.php" />
+        <option value="$PROJECT_DIR$/app/Weui/MenuModels.php" />
+        <option value="$PROJECT_DIR$/resources/views/layout/layui.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/menu/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php" />
       </list>
     </option>
@@ -200,10 +227,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="86" />
-    <option name="y" value="187" />
+    <option name="x" value="206" />
+    <option name="y" value="81" />
     <option name="width" value="1750" />
-    <option name="height" value="913" />
+    <option name="height" value="914" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -241,7 +268,21 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="wechat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Weui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
@@ -259,54 +300,7 @@
               <item name="Laravel" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="wechat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="wechat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="wechat" type="462c0819:PsiDirectoryNode" />
-              <item name="download" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -384,15 +378,15 @@
       <workItem from="1571271485481" duration="991000" />
       <workItem from="1571273230949" duration="24714000" />
       <workItem from="1571310391461" duration="6000000" />
-      <workItem from="1571319338041" duration="7236000" />
+      <workItem from="1571319338041" duration="27937000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220028000" />
+    <option name="totallyTimeSpent" value="240729000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.20576407" />
@@ -450,41 +444,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/index/wechat/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="21" column="89" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/wechat/fansindex.blade.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-432" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/BrandController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
-          <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Chat/Tag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="43" column="23" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="43" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/public/public/RVBUUk4mW6WmODUdG8TPaQCUD2sbKt4q69UnHQZy.png" />
     <entry file="file://$PROJECT_DIR$/storage/app/public/public/MPshqPetv9D9hG2y2KdQ6odmSSnKbOA9a8ONTpJV.jpeg" />
     <entry file="file://$PROJECT_DIR$/storage/app/public/public/kc56EWIKAqad1pfZQHdiNQmloaHQhZpkwlV4BE0f.jpeg" />
     <entry file="file://$PROJECT_DIR$/storage/app/public/public/jnPHAbIreOzuwMaUAly3uu5AvlEkzfLFbqVwjN2Z.jpeg" />
@@ -503,9 +462,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/storage/app/public/wechat/image/15712009898309.jpg" />
-    <entry file="file://$PROJECT_DIR$/app/Weui/CsCate.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Weui/OrderInfo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -538,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layout/layui.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/wechat/fans.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1527">
@@ -564,13 +513,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/weui/MineController.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/weui/CartController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/weui/LoginController.php">
       <provider selected="true" editor-type-id="text-editor" />
@@ -626,13 +568,6 @@
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
         </state>
       </provider>
     </entry>
@@ -707,10 +642,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Unit/ExampleTest.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Weui/CsCate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="65" column="5" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="65" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/users/useradd.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="53" column="80" lean-forward="true" selection-start-line="53" selection-end-line="53" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/weui/CartController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/cate/cateadd.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="29" selection-start-line="23" selection-start-column="10" selection-end-line="24" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Weui/MenuModels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/weui/layout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layout/layui.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="127" column="67" selection-start-line="127" selection-start-column="67" selection-end-line="127" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/CateController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-312">
+          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="134" column="71" selection-start-line="134" selection-start-column="71" selection-end-line="134" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/menu/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="28" column="59" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="59" />
+          <folding>
+            <element signature="e#581#603#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/wechat/MenuController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+        <state relative-caret-position="-1651">
+          <caret line="11" column="42" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
           </folding>

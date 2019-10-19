@@ -13,10 +13,10 @@ class CateController extends Controller
    		if ($request->isMethod('post')) {
     		$data = $request->except('_token');
     		$all = $request->all();
-        $count=CsCate::where('cate_name',$all['cate_name'])->count();
-        if($count>0){
-          echo json_encode(['code'=>2,'font'=>'分类名称已存在']);die;
-        }
+            $count=CsCate::where('cate_name',$all['cate_name'])->count();
+            if($count>0){
+              echo json_encode(['code'=>2,'font'=>'分类名称已存在']);die;
+            }
     		$data = CsCate::create($all);
     		if ($data) {
     			echo json_encode(['code'=>1,'font'=>'添加成功']);die;
