@@ -73,7 +73,7 @@ class FansController extends Controller
         $getsign = CurlController::curlpost($url,$arr);
         $res = json_decode($getsign, true, JSON_UNESCAPED_UNICODE);
         //获取 所有 标签
-        $sign = CurlController::curlindex()['tags'];
+        $sign = CurlController::tag_list()['tags'];
         foreach($res['tagid_list'] as $k=>$v){
             foreach($sign as $k=>$vo){
                 if($v==$vo['id']){

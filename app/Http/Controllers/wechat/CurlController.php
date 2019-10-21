@@ -70,9 +70,9 @@ class CurlController extends Controller
         $token = self::get_access_token();
         $user = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$token."&next_openid=");
         $user = json_decode($user,1);
-        // $data = $user['data'];
-        // $openid = $data['openid'];
-        // dd($openid);
+//         $data = $user['data'];
+//         $openid = $data['openid'];
+//         dd($openid);
         $infos = [];
         foreach($user['data']['openid'] as $k=>$v){
             $userinfo = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$token."&openid=".$v."&lang=zh_CN");

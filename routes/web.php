@@ -153,6 +153,20 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     // 自定义菜单
     Route::any('/wechat/menu','wechat\MenuController@menu');
 
+    //考试
+    Route::any('/wechat/add','wechat\KaoController@add');
+    Route::any('/wechat/user','wechat\KaoController@user');
+    Route::any('/wechat/code','wechat\KaoController@code');
+Route::group(['middleware'=>['Checkwechat']],function(){
+    Route::any('/wechat/getinfo','wechat\KaoController@getinfo');
+    Route::any('/wechat/message','wechat\KaoController@message');
+    Route::any('/wechat/dan','wechat\KaoController@dan');
+});
+
+
+
+
+
 
 
 

@@ -47,6 +47,9 @@ class Kernel extends HttpKernel
         'admin' => [
             "CheckLogin",
         ],
+        'wechat' => [
+            "Checkwechat",
+        ],
     ];
 
     /**
@@ -69,6 +72,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         // 注册 中间件
         'CheckLogin' => \App\Http\Middleware\CheckLogin::class,
+        'Checkwechat' => \App\Http\Middleware\Checkwechat::class,
     ];
 
     /**
