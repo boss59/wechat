@@ -105,6 +105,9 @@
             <dd><a href="/wechat/resource">
                 <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;&nbsp;
                 素材添加</a></dd>
+            <dd><a href="/wechat/qrcode">
+                <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;&nbsp;
+                生成二维码</a></dd>
           </dl>
         </li>
         {{-- 用户管理 --}}

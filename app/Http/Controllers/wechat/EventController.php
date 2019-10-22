@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\wechat\CurlController;//请求
 use App\Weui\UserintModels;
+use App\Weui\OpenidModel;
+use App\Weui\CsUser;
 class EventController extends Controller
 {
     /**
@@ -28,6 +30,29 @@ class EventController extends Controller
         $user=UserintModels::where('openid','=',$xml['FromUserName'])->first();
         // 关注
         if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscribe'){
+            //判断openid表是否有当前openid   生成的二维码
+            $openid_info = OpenidModel::where(['openid'=>$xml['FromUserName']])->first();
+            if(empty($openid_info)){
+                //首次关注
+                if(isset($xml_arr['Ticket'])){
+                    //带参数
+                    $share_code = explode('_',$xml['EventKey'])[1];
+                    OpenidModel::insert([
+                        'uid'=>$share_code,
+                        'openid'=>$xml['FromUserName'],
+                        'subscribe'=>1
+                    ]);
+                    CsUser::where(['user_id'=>$share_code])->increment('share_num',1); //加业绩
+                }else{
+                    //普通关注
+                    OpenidModel::insert([
+                        'user_id'=>0,
+                        'openid'=>$xml['FromUserName'],
+                        'subscribe'=>1
+                    ]);
+                }
+            }
+            //========= 测试号关注=========
             if(!$user){
                 UserintModels::insert([
                     'openid'=>$xml['FromUserName'],
@@ -52,8 +77,9 @@ class EventController extends Controller
             if($user->sign_day == $today){
                 // 已经签到
                 $msg ="今日已签到";
-                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
             }else{
+                // 签到
+                $msg ="签到成功";
                 //根据签到次数加积分
                 //连续签到
                 if($user->sign_day == $last_day){
@@ -76,13 +102,14 @@ class EventController extends Controller
                     ]);
                 }
             }
-
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
 
-
-
-
-
+        // 积分查询
+        if ($xml['MsgType'] == 'event' && $xml['Event'] == 'CLICK' && $xml['EventKey'] == 'select_00'){
+            $msg = "积分为".$user['integral']."";
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }
 
 
         // 普通消息 回复

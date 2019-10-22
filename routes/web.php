@@ -135,6 +135,9 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     Route::any('/wechat/menu_create','wechat\MenuController@menu_create');
     Route::any('/wechat/array','wechat\MenuController@array');
 
+    // 二维码
+    Route::any('/wechat/qrcode','wechat\QrcodeController@qrcode');
+    Route::any('/wechat/add_code','wechat\QrcodeController@add_code');
 
 });
 // 第三方登录 微信
