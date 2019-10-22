@@ -4,14 +4,14 @@ namespace App\Http\Controllers\wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Weui\Csuser;
+use App\Weui\CsUser;
 use App\Http\Controllers\wechat\CurlController;
 use Illuminate\Support\Facades\Storage;
 class QrcodeController extends Controller
 {
     public function qrcode()
     {
-        $info = Csuser::get()->toArray();
+        $info = CsUser::get()->toArray();
         return view('wechat.qrcode',['data'=>$info]);
     }
     // 生成二维码
@@ -37,7 +37,7 @@ class QrcodeController extends Controller
         $qrcode_source = CurlController::curlget($qrcode_url);
         $name = $req.rand(1000,9999).'.jpg';
         Storage::put('/wechat/qrcode/'.$name,$qrcode_source);
-        Csuser::where(['user_id'=>$req])->update([
+        CsUser::where(['user_id'=>$req])->update([
             'qrcode_url' => '/storage/wechat/qrcode/'.$name
         ]);
         return redirect('/wechat/qrcode');
