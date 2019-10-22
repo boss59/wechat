@@ -25,31 +25,66 @@ class EventController extends Controller
         $xml = (array)$xml_obj;
         // 关注 回复
         $info = CurlController::getuser($xml['FromUserName']);
-        $user=UserintModels::where('openid','=',$info['openid'])->first();
+        $user=UserintModels::where('openid','=',$xml['FromUserName'])->first();
+        // 关注
         if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscribe'){
             if(!$user){
                 UserintModels::insert([
-                    'openid'=>$info['openid'],
+                    'openid'=>$xml['FromUserName'],
                     'name'=>$info['nickname'],
                     'add_time'=>time(),
-                    'check_time' =>time(),
+                    'sign_num' =>'0',
+                    'sign_day' =>'0',
                     'integral'=>'0'
                 ]);
+                $msg = '你好'.$info['nickname'].',欢迎关注我的公众号';
+            }else{
+                $msg = '欢迎回来'.$info['nickname'].',关注我的公众号';
             }
-            $msg = '你好'.$info['nickname'].',欢迎关注我的公众号';
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
 
         // 签到 回复
-        if ($xml['MsgType'] == 'event' && $xml['EventKey'] == 'V1001_00'){
-            $msg ="签到成功！";
-            UserintModels::where('openid','=',$info['openid'])->update(['check_time'=>time()]);
-            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        if ($xml['MsgType'] == 'event' && $xml['Event'] == 'CLICK' && $xml['EventKey'] == 'V1001_00') {
+            //判断是否签到
+            $today = date('Y-m-d',time()); //今天
+            $last_day = date('Y-m-d',strtotime("-1 days")); //昨天
+            if($user->sign_day == $today){
+                // 已经签到
+                $msg ="今日已签到";
+                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+            }else{
+                //根据签到次数加积分
+                //连续签到
+                if($user->sign_day == $last_day){
+                    // 连续签到
+                    $sign_num = $user->sign_num +1;
+                    if ($sign_num >= 6){
+                        $sign_num =1;
+                    }
+                    UserintModels::where(['openid'=>$xml['FromUserName']])->update([
+                        'sign_day'=>$today,
+                        'sign_num'=>$sign_num,
+                        'integral'=>$user->integral + 5 * $sign_num
+                    ]);
+                }else{
+                    // 非连续签到
+                    UserintModels::where(['openid'=>$xml['FromUserName']])->update([
+                        'sign_day'=>$today,
+                        'sign_num'=>1,
+                        'integral'=>$user->integral + 5
+                    ]);
+                }
+            }
+
         }
-        if (!empty($user['check_time'])){
-            $msg ="今日已签到";
-            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-        }
+
+
+
+
+
+
+
         // 普通消息 回复
         if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[有需要服务的吗？]]></Content></xml>";

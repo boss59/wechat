@@ -33,9 +33,9 @@ class MenuController extends Controller
                     "key"=>"V1001_00"
                 ],
                 [
-                    "type"=>"view",
+                    "type"=>"click",
                     "name"=>"查询积分🎉",
-                    "url"=>"http://www.soso.com/"
+                    "key"=>"select_00"
                 ]
             ]],
 
@@ -69,7 +69,7 @@ class MenuController extends Controller
                 [
                    "type"=>"view",
                    "name"=>"进入商城⛳",
-                   "url"=>"http://www.soso.com/"
+                   "url"=>"http://www.vonetxs.com/weui/index"
                 ],
                 [
                     "type"=>"click",
@@ -79,7 +79,7 @@ class MenuController extends Controller
                 [
                     "type"=>"click",
                     "name"=>"点赞👍",
-                    "key"=>"V1001_GOOD"
+                    "key"=>"V1001_GOO"
                 ]]
             ]]
         ];
