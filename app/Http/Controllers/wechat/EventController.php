@@ -28,17 +28,17 @@ class EventController extends Controller
         // 关注 回复
         $info = CurlController::getuser($xml['FromUserName']);
         $user=UserintModels::where('openid','=',$xml['FromUserName'])->first();
+        $openid_info = OpenidModel::where(['openid'=>$xml['FromUserName']])->first();
         // 关注
         if($xml['MsgType'] == 'event' && $xml['Event'] == 'subscribe'){
             //判断openid表是否有当前openid   生成的二维码
-            $openid_info = OpenidModel::where(['openid'=>$xml['FromUserName']])->first();
             if(empty($openid_info)){
                 //首次关注
-                if(isset($xml_arr['Ticket'])){
+                if(isset($xml['Ticket'])){
                     //带参数
                     $share_code = explode('_',$xml['EventKey'])[1];
                     OpenidModel::insert([
-                        'uid'=>$share_code,
+                        'user_id'=>$share_code,
                         'openid'=>$xml['FromUserName'],
                         'subscribe'=>1
                     ]);
