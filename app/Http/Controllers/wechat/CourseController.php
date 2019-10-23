@@ -10,6 +10,6 @@ class CourseController extends Controller
     // 课程
     public function course()
     {
-
+        return view('wechat.course');
     }
 }

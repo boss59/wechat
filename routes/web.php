@@ -177,3 +177,6 @@ Route::group(['middleware'=>['Checkwechat']],function(){
 
     // 验 签
     Route::any('/wechat/sdk','wechat\QrcodeController@sdk');
+
+    // 课程
+    Route::any('/wechat/course','wechat\CourseController@course');

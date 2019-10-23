@@ -26,9 +26,9 @@ class MenuController extends Controller
                     "key"=>"course_select"
                 ],
                 [
-                    "type"=>"click",
+                    "type"=>"view",
                     "name"=>"管理课程📚",
-                    "key"=>"course_00"
+                    "url"=>"http://www.vonetxs.com/wechat/course"
                 ],
                 [
                     "type"=>"click",
