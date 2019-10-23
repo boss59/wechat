@@ -28,7 +28,7 @@ class LoginController extends Controller
 			if($data['userpwd'] != $data['conpwd']){
 				echo json_encode(['code'=>0,'font'=>'密码不一致']);die;
 			}
-			$data['userpwd'] = base64_encode('userpwd');
+			$data['userpwd'] = md5('userpwd');
 			// dd($data);
 			$res = CsUser::create($data);
 			if ($res) {
@@ -63,7 +63,7 @@ class LoginController extends Controller
 	             ->withInput();
 	        }
 	        // 用户验证
-	        $data['userpwd'] = base64_encode($data['userpwd']);
+	        $data['userpwd'] = md5($data['userpwd']);
 	       	// dd($data);
     		$info = CsUser::where('phone',$data['phone'])->first();
     		if (empty($info)) {
