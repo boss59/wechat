@@ -42,4 +42,16 @@ class QrcodeController extends Controller
         ]);
         return redirect('/wechat/qrcode');
     }
+    // 验 签 sdk
+    public function sdk()
+    {
+        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $appid = env('WECGAT_APPID');
+        $_now_ = time();
+        $rand_str = rand(1000,9999).'jssdk'.time();
+        $jsapi_ticket = CurlController::sdk();
+        $sign_str = 'jsapi_ticket='.$jsapi_ticket.'&noncestr='.$rand_str.'&timestamp='.$_now_.'&url='.$url;
+        $signature = sha1($sign_str);
+        return view('wechat.sdk',['signature'=>$signature,'appid'=>$appid,'time'=>$_now_,'rand_str'=>$rand_str]);
+    }
 }

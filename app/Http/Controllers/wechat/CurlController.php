@@ -112,4 +112,22 @@ class CurlController extends Controller
         curl_close($curl);
         return $result;
     }
+    // 验 签
+    public static function sdk()
+    {
+        $token = self::get_access_token();
+        $key = 'sdk';
+        //判断缓存是否存在
+        if(\Cache::has($key)) {
+            //取缓存
+            $sdk = \Cache::get($key);
+        }else{
+            //取不到，调接口，缓存
+            $re = file_get_contents('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='.$token.'&type=jsapi');
+            $result = json_decode($re,true);
+            \Cache::put($key,$result['ticket'],$result['expires_in']);
+            $sdk = $result['ticket'];
+        }
+        return $sdk;
+    }
 }
