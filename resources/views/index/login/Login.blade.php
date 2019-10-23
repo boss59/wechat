@@ -40,7 +40,7 @@
         </form>
     </div>
     <div class="forgets">
-    	<a href="/weui/chage">忘记密码？</a>
+    	<a href="/weui/psd_chage">忘记密码？</a>
         <a href="/weui/regist">免费注册</a>
     </div>
 </div>
