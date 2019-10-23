@@ -9,7 +9,9 @@
 </head>
 <body>
 <center>
-<form action="/wechat/course" method="post">
+<form action="/wechat/index_course" method="post">
+@csrf
+    <input type="hidden" name="openid" value="{{ $openid }}">
 <table border="1">
     <tr>
         <td>第一节：</td>

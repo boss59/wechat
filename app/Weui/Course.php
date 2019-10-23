@@ -13,7 +13,7 @@ class Course extends Model
     // const UPDATED_AT = 'update_time';
     //  int类型 时间
 //    protected $dateFormat = 'U'; // U表示时间戳类型/
-    protected $guarded = [];// 不可批量赋值的属性。 不加字段 可以通过
+//    protected $guarded = [];// 不可批量赋值的属性。 不加字段 可以通过
     // protected $fillable = [];
     // // 可批量赋值的属性。 要加字段  可以通过
     // 取消自动维护
