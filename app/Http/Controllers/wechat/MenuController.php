@@ -21,11 +21,14 @@ class MenuController extends Controller
                 "name"=>"积分👑",
                 "sub_button"=>[
                 [
-                    "type"=> "scancode_waitmsg",
-                    "name"=> "扫一扫👐",
-                    "key"=> "rselfmenu_0_0",
-                    "sub_button"=> [ ]
-
+                    "type"=>"click",
+                    "name"=>"查看课程📖",
+                    "key"=>"course_select"
+                ],
+                [
+                    "type"=>"click",
+                    "name"=>"管理课程📚",
+                    "key"=>"course_00"
                 ],
                 [
                     "type"=>"click",

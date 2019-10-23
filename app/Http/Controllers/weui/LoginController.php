@@ -28,8 +28,6 @@ class LoginController extends Controller
 			if($data['userpwd'] != $data['conpwd']){
 				echo json_encode(['code'=>0,'font'=>'密码不一致']);die;
 			}
-			$data['userpwd'] = md5('userpwd');
-			// dd($data);
 			$res = CsUser::create($data);
 			if ($res) {
 				echo json_encode(['code'=>1,'font'=>'注册成功']);die;
@@ -63,14 +61,13 @@ class LoginController extends Controller
 	             ->withInput();
 	        }
 	        // 用户验证
-	        $data['userpwd'] = md5($data['userpwd']);
-	       	// dd($data);
+//	       	 dd($data);
     		$info = CsUser::where('phone',$data['phone'])->first();
     		if (empty($info)) {
 	            return "<script>alert('账号不存在');parent.location.href='/weui/Login';</script>";die;
 	        }else{
 	             //判断密码是否正确
-	            if ($info['userpwd']==$data['userpwd']) {//用库里加密密码 == 接收的加密密码
+	            if ($info['userpwd']==md5($data['userpwd'])) {//用库里加密密码 == 接收的加密密码
 	            	$request->session()->put('userinfo',$info);
 	            	if (!empty($refer)) {
 	            		return redirect($refer);
