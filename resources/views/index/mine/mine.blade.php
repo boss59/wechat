@@ -32,7 +32,7 @@
 
   <div class="weui-panel weui-panel_access">
     <div class="weui-panel__hd">
-      <a href="all_orders.html" class="weui-cell weui-cell_access center-alloder">
+      <a href="/weui/orders" class="weui-cell weui-cell_access center-alloder">
         <div class="weui-cell__bd wy-cell">
           <div class="weui-cell__hd"><img src="images/center-icon-order-all.png" alt="" class="center-list-icon"></div>
           <div class="weui-cell__bd weui-cell_primary"><p class="center-list-txt">全部订单</p></div>
@@ -43,27 +43,27 @@
     <div class="weui-panel__bd">
       <div class="weui-flex">
         <div class="weui-flex__item">
-          <a href="all_orders.html" class="center-ordersModule">
-            <span class="weui-badge" style="position: absolute;top:5px;right:10px; font-size:10px;">2</span>
+          <a href="/weui/orders" class="center-ordersModule">
+            <span class="weui-badge" style="position: absolute;top:5px;right:10px; font-size:10px;"></span>
             <div class="imgicon"><img src="images/center-icon-order-dfk.png" /></div>
             <div class="name">待付款</div>
           </a>
         </div>
         <div class="weui-flex__item">
-          <a href="all_orders.html" class="center-ordersModule">
-            <span class="weui-badge" style="position: absolute;top:5px;right:10px; font-size:10px;">1</span>
+          <a href="/weui/orders" class="center-ordersModule">
+            <span class="weui-badge" style="position: absolute;top:5px;right:10px; font-size:10px;"></span>
             <div class="imgicon"><img src="images/center-icon-order-dfh.png" /></div>
             <div class="name">待发货</div>
           </a>
         </div>
         <div class="weui-flex__item">
-          <a href="all_orders.html" class="center-ordersModule">
+          <a href="/weui/orders" class="center-ordersModule">
             <div class="imgicon"><img src="images/center-icon-order-dsh.png" /></div>
             <div class="name">待收货</div>
           </a>
         </div>
         <div class="weui-flex__item">
-          <a href="orders.html" class="center-ordersModule">
+          <a href="/weui/comment" class="center-ordersModule">
             <span class="weui-badge" style="position: absolute;top:5px;right:10px; font-size:10px;">2</span>
             <div class="imgicon"><img src="images/center-icon-order-dpj.png" /></div>
             <div class="name">待评价</div>
@@ -75,7 +75,7 @@
   
   <div class="weui-panel weui-panel_access">
     <div class="weui-panel__hd">
-      <a href="myburse.html" class="weui-cell weui-cell_access center-alloder">
+      <a href="/weui/myburse" class="weui-cell weui-cell_access center-alloder">
         <div class="weui-cell__bd wy-cell">
           <div class="weui-cell__hd"><img src="images/center-icon-jk.png" alt="" class="center-list-icon"></div>
           <div class="weui-cell__bd weui-cell_primary"><p class="center-list-txt">我的小金库</p></div>
@@ -86,25 +86,25 @@
     <div class="weui-panel__bd">
       <div class="weui-flex">
         <div class="weui-flex__item">
-          <a href="myburse.html" class="center-ordersModule">
+          <a href="/weui/myburse" class="center-ordersModule">
             <div class="center-money"><em>800.0</em></div>
             <div class="name">账户总额</div>
           </a>
         </div>
         <div class="weui-flex__item">
-          <a href="myburse.html" class="center-ordersModule">
+          <a href="/weui/myburse" class="center-ordersModule">
             <div class="center-money"><em>50.0</em></div>
             <div class="name">返现金额</div>
           </a>
         </div>
         <div class="weui-flex__item">
-          <a href="myburse.html" class="center-ordersModule">
+          <a href="/weui/myburse" class="center-ordersModule">
             <div class="center-money"><em>550.0</em></div>
             <div class="name">待返还</div>
           </a>
         </div>
         <div class="weui-flex__item">
-          <a href="myburse.html" class="center-ordersModule">
+          <a href="/weui/myburse" class="center-ordersModule">
             <div class="center-money"><em>165</em></div>
             <div class="name">蓝豆</div>
           </a>
@@ -118,7 +118,7 @@
         <div class="weui-panel__bd">
           <div class="weui-media-box weui-media-box_small-appmsg">
             <div class="weui-cells">
-              <a class="weui-cell weui-cell_access" href="record.html">
+              <a class="weui-cell weui-cell_access" href="/weui/record">
                 <div class="weui-cell__hd"><img src="images/center-icon-jyjl.png" alt="" class="center-list-icon"></div>
                 <div class="weui-cell__bd weui-cell_primary">
                   <p class="center-list-txt">交易记录</p>
@@ -139,14 +139,14 @@
                 </div>
                 <span class="weui-cell__ft"></span>
               </a>
-              <a class="weui-cell weui-cell_access" href="card.html">
+              <a class="weui-cell weui-cell_access" href="/weui/card">
                 <div class="weui-cell__hd"><img src="images/center-icon-yhk.png" alt="" class="center-list-icon"></div>
                 <div class="weui-cell__bd weui-cell_primary">
                   <p class="center-list-txt">我的银行卡</p>
                 </div>
                 <span class="weui-cell__ft"></span>
               </a>
-              <a class="weui-cell weui-cell_access" href="password.html">
+              <a class="weui-cell weui-cell_access" href="/weui/password">
                 <div class="weui-cell__hd"><img src="images/center-icon-dlmm.png" alt="" class="center-list-icon"></div>
                 <div class="weui-cell__bd weui-cell_primary">
                   <p class="center-list-txt">密码修改</p>

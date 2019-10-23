@@ -39,4 +39,44 @@ class MineController extends Controller
     	$res = $request->session()->flush();
     	return redirect("/weui/index");
     }
+    // 我的小金库
+    public function myburse()
+    {
+        return view('index.mine.myburse');
+    }
+    // 交易记录
+    public function record()
+    {
+        return view('index.mine.record');
+    }
+    // 密码修改
+    public function password()
+    {
+        return view('index.mine.password');
+    }
+    // 银行卡
+    public function card()
+    {
+        return view('index.mine.card');
+    }
+    // 余额充值
+    public function chongzhi()
+    {
+        return view('index.mine.chongzhi');
+    }
+    // 评价
+    public function comment()
+    {
+        return view('index.mine.comment');
+    }
+    // 密码修改
+    public function psd_chage()
+    {
+        return view('index.mine.psd_chage');
+    }
+    // 添加银行卡
+    public function add_card()
+    {
+        return view('index.mine.add_card');
+    }
 }

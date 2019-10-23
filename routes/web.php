@@ -66,6 +66,15 @@ Route::any('/weui/alipay','weui\OrderinfoController@alipay');// 支付
 Route::any('/weui/returnpay','weui\OrderinfoController@returnpay');// 同步
 Route::any('/weui/notifypay','weui\OrderinfoController@notifypay');// 异步
 
+// 我的
+Route::any('/weui/myburse','weui\MineController@myburse');// 小金库
+Route::any('/weui/record','weui\MineController@record');// 交易记录
+Route::any('/weui/password','weui\MineController@password');// 密码修改
+Route::any('/weui/psd_chage','weui\MineController@psd_chage');// 密码修改
+Route::any('/weui/card','weui\MineController@card');// 银行卡
+Route::any('/weui/add_card','weui\MineController@add_card');// 添加银行卡
+Route::any('/weui/chongzhi','weui\MineController@chongzhi');// 余额充值
+Route::any('/weui/comment','weui\MineController@comment');// 评价
 
 // =============== admin 后台======================
 Route::group(['middleware'=>['CheckLogin']],function(){
