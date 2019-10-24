@@ -19,7 +19,6 @@ class ResourceController extends Controller
     {
         // 接类型
         $type = $request->input('type');
-        dd($type);
         // 接name
         $file_obj =$request->file('resource');
         if (!$request->hasFile('resource')){
@@ -99,6 +98,7 @@ class ResourceController extends Controller
         ];
         $re = CurlController::curlpost($url,json_encode($data, JSON_UNESCAPED_UNICODE));
         $arr =json_decode($re,1);
+        dd($arr);
         $data = Resource::get()->toarray();
         return view('wechat.list',['data'=>$data]);
     }

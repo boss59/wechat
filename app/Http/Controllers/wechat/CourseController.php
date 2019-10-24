@@ -30,7 +30,6 @@ class CourseController extends Controller
         // 第四步：拉取用户信息(需scope为 snsapi_userinfo)
         $info = file_get_contents("https://api.weixin.qq.com/sns/userinfo?access_token=".$userinfo['access_token']."&openid=".$userinfo['openid']."&lang=zh_CN");
         $userinfo = json_decode($info,1);
-        dd($userinfo);
         if ($userinfo){
             $request->session()->put('openid',$userinfo);
             return redirect('/wechat/index_cousre');

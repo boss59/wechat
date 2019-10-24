@@ -131,13 +131,13 @@ class EventController extends Controller
             $msg = "我爱你！";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '6'){
-            $media_id ="mykIkSBhsIL2j3DNMTnCA5Wf_x0PwgprQnzFC62hpX0";
+            $media_id ="";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[voice]]></MsgType><Voice><MediaId><![CDATA[".$media_id."]]></MediaId></Voice></xml>";
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '8'){
-            $media_id ="mykIkSBhsIL2j3DNMTnCA2dZLj0U7QK25M01VqKGGKM";
+            $media_id ="";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[image]]></MsgType><Image><MediaId><![CDATA[".$media_id."]]></MediaId></Image></xml>";
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '9'){
-            $media_id ="mykIkSBhsIL2j3DNMTnCA2JS3GtrD_g076r0EQMofb4";
+            $media_id ="";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[video]]></MsgType><Video><MediaId><![CDATA[".$media_id."]]></MediaId><Title>"."遇见"."</Title><Description>"."我遇见谁会有怎样的对白,我等的人他在多远的未来,我听见风来自地铁和人海,我排著队拿著爱的号码牌"."</Description></Video></xml>";exit;
         }else{
             $msg = "纵情山河万里，肆意九州五岳！！！";
