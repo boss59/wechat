@@ -117,7 +117,11 @@ class EventController extends Controller
         // 课程管理
         $data = Course::where('openid',$xml['FromUserName'])->first();
         if ($xml['MsgType'] == 'event' && $xml['Event'] == 'CLICK' && $xml['EventKey'] == 'course_select'){
-            $msg = "课程提醒\n第一节课：".$data['one']."\n第二节课：".$data['two']."\n第三节课：".$data['three']."\n第四节课：".$data['four']."";
+            if(empty($data)){
+                $msg = "还未选择课程 请选择课程";
+            }else{
+                $msg = "课程提醒\n第一节课：".$data['one']."\n第二节课：".$data['two']."\n第三节课：".$data['three']."\n第四节课：".$data['four']."";
+            }
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
         // 普通消息 回复
@@ -127,10 +131,10 @@ class EventController extends Controller
             $msg = "我爱你！";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '6'){
-            $media_id ="tyXhwlo9Gh-761o1Fb6savT_RIhhLMcYXDpwUe8aJllFE2wNwMhwdEF7hHEoNd7u";
+            $media_id ="mykIkSBhsIL2j3DNMTnCA5Wf_x0PwgprQnzFC62hpX0";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[voice]]></MsgType><Voice><MediaId><![CDATA[".$media_id."]]></MediaId></Voice></xml>";
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '8'){
-            $media_id ="6cBYHyFtf74PI2o__6Uo0ErmgRPWevyLcA59PlFqtIhax__SImQlMoJ7pf3WdHXS";
+            $media_id ="mykIkSBhsIL2j3DNMTnCA2dZLj0U7QK25M01VqKGGKM";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[image]]></MsgType><Image><MediaId><![CDATA[".$media_id."]]></MediaId></Image></xml>";
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '9'){
             $media_id ="mykIkSBhsIL2j3DNMTnCA2JS3GtrD_g076r0EQMofb4";
