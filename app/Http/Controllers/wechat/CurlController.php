@@ -130,4 +130,13 @@ class CurlController extends Controller
         }
         return $sdk;
     }
+    // 油价 查询
+    public static function oil()
+    {
+        $appkey = "7ca1ac6cb8adf854203f3e2a165394e6";
+        $url = 'http://apis.juhe.cn/cnoil/oil_city?key='.$appkey;
+        $re = self::curlget($url);
+        $oil = json_decode($re,1);
+        return $oil;
+    }
 }
