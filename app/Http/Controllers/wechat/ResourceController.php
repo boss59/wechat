@@ -98,7 +98,7 @@ class ResourceController extends Controller
         ];
         $re = CurlController::curlpost($url,json_encode($data, JSON_UNESCAPED_UNICODE));
         $arr =json_decode($re,1);
-        dd($arr);
+//        dd($arr);
         $data = Resource::get()->toarray();
         return view('wechat.list',['data'=>$data]);
     }
