@@ -182,3 +182,4 @@ Route::group(['middleware'=>['Checkwechat']],function(){
     Route::any('/wechat/course','wechat\CourseController@course');
     Route::any('/wechat/add_course','wechat\CourseController@add_course');
     Route::any('/wechat/index_course','wechat\CourseController@index_course');
+    Route::any('/wechat/update_cousre','wechat\CourseController@update_cousre');

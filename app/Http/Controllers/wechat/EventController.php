@@ -8,6 +8,7 @@ use App\Http\Controllers\wechat\CurlController;//请求
 use App\Weui\UserintModels;
 use App\Weui\OpenidModel;
 use App\Weui\CsUser;
+use App\Weui\Course;
 class EventController extends Controller
 {
     /**
@@ -114,7 +115,11 @@ class EventController extends Controller
 
 
         // 课程管理
-
+        $data = Course::where('openid',$xml['FromUserName'])->first();
+        if ($xml['MsgType'] == 'event' && $xml['Event'] == 'CLICK' && $xml['EventKey'] == 'course_select'){
+            $msg = "课程提醒\n第一节课：".$data['one']."\n第二节课：".$data['two']."\n第三节课：".$data['three']."\n第四节课：".$data['four']."";
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }
         // 普通消息 回复
         if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[有需要服务的吗？]]></Content></xml>";
