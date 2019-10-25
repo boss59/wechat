@@ -69,7 +69,7 @@ class ResourceController extends Controller
             $data['description'] =json_encode($data['description'], JSON_UNESCAPED_UNICODE);
         }
 //        dd($data);
-        $re = CurlController::post_file($url,$data);
+        $re = CurlController::curlpost($url,$data);
         $res =json_decode($re,1);
         if (!isset($res['errcode'])){
             $en=Resource::insert([

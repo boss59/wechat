@@ -4,23 +4,24 @@ namespace App\Http\Controllers\wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 class CurlController extends Controller
 {
     // 获取 token
     public static function get_access_token()
     {
-//        \Cache::forget('access_token');die;
-        // dd($value);
-        if(\Cache::has('access_token')){
-            $value = \Cache::get('access_token');
+        $key = "access_token";
+        //判断缓存是否存在
+        if(\Cache::has($key)) {
+            //取缓存
+            $access_token = \Cache::get($key);
         }else{
-            $info = file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxc17d07531889d3ff&secret=bbed9e4037fe1536b8ff66d9493c16dc');
-            $value = json_decode($info,true);
-            \Cache::put('access_token', $value["access_token"], $value["expires_in"]);
-            return $value["access_token"];
+            //取不到，调接口，缓存
+            $re = file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('WECGAT_APPID').'&secret='.env('WECHET_SECRET'));
+            $result = json_decode($re,true);
+            \Cache::put($key,$result['access_token'],$result['expires_in']);
+            $access_token = $result['access_token'];
         }
-        return $value;
+        return $access_token;
     }
     // get 请求
     public static function curlget($url)
@@ -92,20 +93,6 @@ class CurlController extends Controller
         $data = [
             'meida' =>new \CURLFile(realpath($push)),
         ];
-
-        curl_setopt($curl,CURLOPT_POSTFIELDS,$data);
-        $result = curl_exec($curl);
-        curl_close($curl);
-        return $result;
-    }
-    // 上传 post 素材
-    public static function post_file($url,$data)
-    {
-        $curl = curl_init($url);
-        curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,false);
-        curl_setopt($curl,CURLOPT_SSL_VERIFYHOST,false);
-        curl_setopt($curl,CURLOPT_POST,true);
 
         curl_setopt($curl,CURLOPT_POSTFIELDS,$data);
         $result = curl_exec($curl);
