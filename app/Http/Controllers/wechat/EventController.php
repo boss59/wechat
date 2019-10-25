@@ -113,7 +113,6 @@ class EventController extends Controller
         }
 
 
-
         // 课程管理
         $data = Course::where('openid',$xml['FromUserName'])->first();
         if ($xml['MsgType'] == 'event' && $xml['Event'] == 'CLICK' && $xml['EventKey'] == 'course_select'){
@@ -124,6 +123,57 @@ class EventController extends Controller
             }
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
+
+        // 油价 查询
+        $oil = CurlController::oil();
+        $mb = mb_substr($xml['Content'],0,-2);
+        foreach($oil as $k=>$v){
+            if(in_array($mb,$v)){
+                $arr=$v;
+            }
+        }
+        if(empty($arr)){
+            $msg = "输入，有误";
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }else{
+            $token = CurlController::get_access_token();
+            $url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='.$token;
+            $data = [
+                'touser'=>$xml['FromUserName'],
+                'template_id'=>'TEcRg_rcSVkNGJYnJ5yRlBWQ26kXmt7UIcxYc8esFY8',
+                'data'=>[
+                    'keyword1'=>[
+                        'value'=>$user['name'],
+                        'color'=>''
+                    ],
+                    'keyword2'=>[
+                        'value'=>$arr['city'],
+                        'color'=>''
+                    ],
+                    'keyword3'=>[
+                        'value'=>$arr['92h'],
+                        'color'=>''
+                    ],
+                    'keyword4'=>[
+                        'value'=>$arr['95h'],
+                        'color'=>''
+                    ],
+                    'keyword5'=>[
+                        'value'=>$arr['98h'],
+                        'color'=>''
+                    ],
+                    'keyword6'=>[
+                        'value'=>$arr['0h'],
+                        'color'=>''
+                    ]
+                ]
+            ];
+            $arr = json_encode($data, JSON_UNESCAPED_UNICODE);
+            CurlController::curlpost($url,$arr);
+        }
+
+
+
         // 普通消息 回复
         if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[有需要服务的吗？]]></Content></xml>";
@@ -139,8 +189,6 @@ class EventController extends Controller
         }else if($xml['MsgType'] == 'text' && $xml['Content'] == '9'){
             $media_id ="mykIkSBhsIL2j3DNMTnCA2JS3GtrD_g076r0EQMofb4";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[video]]></MsgType><Video><MediaId><![CDATA[".$media_id."]]></MediaId><Title>"."遇见"."</Title><Description>"."我遇见谁会有怎样的对白,我等的人他在多远的未来,我听见风来自地铁和人海,我排著队拿著爱的号码牌"."</Description></Video></xml>";exit;
-        }else if($xml['MsgType'] == 'text' && $xml['Content'] == '城市+油价'){
-
         }else{
             $msg = "纵情山河万里，肆意九州五岳！！！";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";

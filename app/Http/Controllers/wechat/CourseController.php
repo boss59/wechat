@@ -32,7 +32,7 @@ class CourseController extends Controller
         $userinfo = json_decode($info,1);
         if ($userinfo){
             $request->session()->put('openid',$userinfo);
-            return redirect('/wechat/index_cousre');
+            return redirect('/wechat/index_course');
         }
     }
     // 课程

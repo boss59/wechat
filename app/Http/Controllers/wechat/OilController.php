@@ -11,6 +11,15 @@ class OilController extends Controller
     public function oil()
     {
         $oil = CurlController::oil();
-        dd($oil);
+        $a = "北京油价";
+        $mb = mb_substr($a,0,-2);
+        foreach($oil as $k=>$v){
+            if(in_array($mb,$v)){
+                $arr=$v;
+            }
+
+        }
+        dd($arr['0h']);
+
     }
 }
