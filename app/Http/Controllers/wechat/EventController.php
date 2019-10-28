@@ -125,53 +125,6 @@ class EventController extends Controller
         }
 
         // 油价 查询
-        $oil = CurlController::oil();
-        $mb = mb_substr($xml['Content'],0,-2);
-        foreach($oil as $k=>$v){
-            if(in_array($mb,$v)){
-                $arr=$v;
-            }
-        }
-        if(empty($arr)){
-            $msg = "输入，有误";
-            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-        }else{
-            $token = CurlController::get_access_token();
-            $url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='.$token;
-            $data = [
-                'touser'=>$xml['FromUserName'],
-                'template_id'=>'TEcRg_rcSVkNGJYnJ5yRlBWQ26kXmt7UIcxYc8esFY8',
-                'data'=>[
-                    'keyword1'=>[
-                        'value'=>$user['name'],
-                        'color'=>''
-                    ],
-                    'keyword2'=>[
-                        'value'=>$arr['city'],
-                        'color'=>''
-                    ],
-                    'keyword3'=>[
-                        'value'=>$arr['92h'],
-                        'color'=>''
-                    ],
-                    'keyword4'=>[
-                        'value'=>$arr['95h'],
-                        'color'=>''
-                    ],
-                    'keyword5'=>[
-                        'value'=>$arr['98h'],
-                        'color'=>''
-                    ],
-                    'keyword6'=>[
-                        'value'=>$arr['0h'],
-                        'color'=>''
-                    ]
-                ]
-            ];
-            $arr = json_encode($data, JSON_UNESCAPED_UNICODE);
-            CurlController::curlpost($url,$arr);
-        }
-
 
 
         // 普通消息 回复
