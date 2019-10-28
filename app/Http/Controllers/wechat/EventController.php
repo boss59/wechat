@@ -126,40 +126,39 @@ class EventController extends Controller
         }
 
         // 油价 消息回复 查询
-        $content = $xml['Content'];
-        if($xml['MsgType'] == 'text' && strpos($content,'油价')){
-            $city = mb_substr($content,0,-2);
-            $city_num = \Cache::increment($city.":num");
-            if($city_num > 10){
-                $msg = \Cache::get($city.":data");
-                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-                die();
-            }
-            // 获取 油价信息
-            $result = CurlController::oil();
-            if(!\Cache::has(date('Y-m-d',time()))){
-                \ache::put(date('Y-m-d',time()),$result,2 * 24 * 3600); //缓存今天的油价信息
-            }
-            $city_arr = [];
-            foreach($result as $v){
-                $city_arr[] = $v['city'];
-            }
-            if(!in_array($city,$city_arr)){
-                $msg = '不支持当前城市！';
-                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-                die();
-            }
-            foreach($result as $v){
-                if($v['city'] == $city){
-                    $msg = $v['92h']."\n".$v['95h']."\n";
-                    if($city_num == 10){
-                        \Cache::put($city.':data',$msg);
-                    }
-                    echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-                    die();
-                }
-            }
-        }
+//        $content = $xml['Content'];
+//        if($xml['MsgType'] == 'text' && strpos($content,'油价')){
+//            $city = mb_substr($content,0,-2);
+//            $city_num = \Cache::increment($city.":num");
+//            if($city_num > 10){
+//                $msg = \Cache::get($city.":data");
+//                $this->oil($msg,$xml['FromUserName']);die;
+//            }
+//            // 获取 油价信息
+//            $result = CurlController::oil();
+//            //缓存今天的油价信息
+//            if(!\Cache::has(date('Y-m-d',time()))){
+//                \Cache::put(date('Y-m-d',time()),$result,2 * 24 * 3600);
+//            }
+//
+//            $city_arr = [];
+//            foreach($result as $v){
+//                $city_arr[] = $v['city'];
+//            }
+//            if(!in_array($city,$city_arr)){
+//                $msg = '不支持当前城市！';
+//                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+//                die();
+//            }
+//            foreach($result as $v){
+//                if($v['city'] == $city){
+//                    if($city_num == 10){
+//                        \Cache::put($city.':data',$v);
+//                    }
+//                    $this->oil($v,$xml['FromUserName']);
+//                }
+//            }
+//        }
 
         // 普通消息 回复
         if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
@@ -180,5 +179,41 @@ class EventController extends Controller
             $msg = "纵情山河万里，肆意九州五岳！！！";
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
+    }
+    // 油价查询
+    public function oil($v,$info)
+    {
+        $token = CurlController::get_access_token();
+        $url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='.$token;
+        $data = [
+            'touser'=>$info,
+            'template_id'=>'oKrOgK-HLTG3-_8XoVn7MU0Qb4RPDOc0jHHqF5kRWx8',
+            'data'=>[
+                'keyword1'=>[
+                    'value'=>$v['city'],
+                    'color'=>''
+                ],
+                'keyword2'=>[
+                    'value'=>$v['92h'],
+                    'color'=>''
+                ],
+                'keyword3'=>[
+                    'value'=>$v['95h'],
+                    'color'=>''
+                ],
+                'keyword4'=>[
+                    'value'=>$v['98h'],
+                    'color'=>''
+                ],
+                'keyword5'=>[
+                    'value'=>$v['0h'],
+                    'color'=>''
+                ],
+            ]
+        ];
+        $arr = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $fans = CurlController::curlpost($url,$arr);
+        $data = json_decode($fans, true, JSON_UNESCAPED_UNICODE);
+
     }
 }
