@@ -129,7 +129,7 @@ class CurlController extends Controller
             $url = 'http://apis.juhe.cn/cnoil/oil_city?key='.$appkey;
             $re = self::curlget($url);
             $oil = json_decode($re,1);
-            \Cache::put($key,$oil['result'],86400);
+            \Cache::put($key,$oil['result'],6400);
             $appoil = $oil['result'];
         }
         return $appoil;
