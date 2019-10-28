@@ -5,6 +5,7 @@ namespace App\Http\Controllers\wechat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Weui\Course;
+use App\Http\Controllers\wechat\CurlController;//请求
 class CourseController extends Controller
 {
     // 课程

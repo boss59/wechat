@@ -185,5 +185,5 @@ Route::group(['middleware'=>['Checkwechat']],function(){
     Route::any('/wechat/update_cousre','wechat\CourseController@update_cousre');
 
     // 油价
-    Route::any('/wechat/oil','wechat\OilController@oil');
+    Route::any('/wechat/oil','wechat\CourseController@oil');
 
