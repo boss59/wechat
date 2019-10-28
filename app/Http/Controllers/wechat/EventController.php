@@ -126,43 +126,41 @@ class EventController extends Controller
         }
 
         // 油价 消息回复 查询
-        $content = $xml['Content'];
-        if ($xml['MsgType'] == 'text' && strpos($content,'油价')){
-            $city = mb_substr($content,0,-2);
-            $city_num = Cache::increment($city.":num");
-            if($city_num > 10){
-                $msg = Cache::get($city.":data");
-                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-                die();
-            }
-
-            $result = CurlController::oil();// 得到 城市油价
-            //缓存今天的油价信息
-            if(!Cache::has(date('Y-m-d',time()))){
-                Cache::put(date('Y-m-d',time()),$result,2 * 24 * 3600);
-            }
-
-            $city_arr = [];
-            foreach($result as $v){
-                $city_arr[] = $v['city'];
-            }
-            if(!in_array($city,$city_arr)){
-                $msg = '不支持当前城市！';
-                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-                die();
-            }
-
-            foreach($result as $v){
-                if($v['city'] == $city){
-                    $msg = $v['92h']."\n".$v['95h']."\n".$v['98h']."\n".$v['0h']."\n";
-                    if($city_num == 10){
-                        Cache::put($city.':data',$msg);
-                    }
+        if($xml['MsgType'] == 'text'){
+            $content = $xml['Content'];
+            if(strpos($content,'油价')){
+                $city = mb_substr($content,0,-2);
+                $city_num = \Cache::increment($city.":num");
+                if($city_num > 10){
+                    $msg = \Cache::get($city.":data");
                     echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
                     die();
                 }
+                $re = file_get_contents('http://wechat.18022480300.com/wechat/youjia');
+                $result = json_decode($re,1);
+                if(!\Cache::has(date('Y-m-d',time()))){
+                    \Cache::put(date('Y-m-d',time()),$re,2 * 24 * 3600); //缓存今天的油价信息
+                }
+                $city_arr = [];
+                foreach($result as $v){
+                    $city_arr[] = $v['city'];
+                }
+                if(!in_array($city,$city_arr)){
+                    $msg = '不支持当前城市！';
+                    echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+                    die();
+                }
+                foreach($result['result'] as $v){
+                    if($v['city'] == $city){
+                        $msg = $v['92h']."\n".$v['95h']."\n";
+                        if($city_num == 10){
+                            \Cache::put($city.':data',$msg);
+                        }
+                        echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+                        die();
+                    }
+                }
             }
-
         }
 
         // 普通消息 回复
