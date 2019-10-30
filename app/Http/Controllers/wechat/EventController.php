@@ -126,39 +126,38 @@ class EventController extends Controller
         }
 
         // 油价 消息回复 查询
-//        $content = $xml['Content'];
-//        if($xml['MsgType'] == 'text' && strpos($content,'油价')){
-//            $city = mb_substr($content,0,-2);
-//            $city_num = \Cache::increment($city.":num");
-//            if($city_num > 10){
-//                $msg = \Cache::get($city.":data");
-//                $this->oil($msg,$xml['FromUserName']);die;
-//            }
-//            // 获取 油价信息
-//            $result = CurlController::oil();
-//            //缓存今天的油价信息
-//            if(!\Cache::has(date('Y-m-d',time()))){
-//                \Cache::put(date('Y-m-d',time()),$result,2 * 24 * 3600);
-//            }
-//
-//            $city_arr = [];
-//            foreach($result as $v){
-//                $city_arr[] = $v['city'];
-//            }
-//            if(!in_array($city,$city_arr)){
-//                $msg = '不支持当前城市！';
-//                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
-//                die();
-//            }
-//            foreach($result as $v){
-//                if($v['city'] == $city){
-//                    if($city_num == 10){
-//                        \Cache::put($city.':data',$v);
-//                    }
-//                    $this->oil($v,$xml['FromUserName']);
-//                }
-//            }
-//        }
+        if($xml['MsgType'] == 'text' && strpos($xml['Content'],'油价')){
+            $city = mb_substr($xml['Content'],0,-2);
+            $city_num = \Cache::increment($city.":num");
+            if($city_num > 10){
+                $msg = \Cache::get($city.":data");
+                $this->oil($msg,$xml['FromUserName']);die;
+            }
+            // 获取 油价信息
+            $result = CurlController::oil();
+            //缓存今天的油价信息
+            if(!\Cache::has(date('Y-m-d',time()))){
+                \Cache::put(date('Y-m-d',time()),$result,2 * 24 * 3600);
+            }
+
+            $city_arr = [];
+            foreach($result as $v){
+                $city_arr[] = $v['city'];
+            }
+            if(!in_array($city,$city_arr)){
+                $msg = '不支持当前城市！';
+                echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+                die();
+            }
+            foreach($result as $v){
+                if($v['city'] == $city){
+                    if($city_num == 10){
+                        \Cache::put($city.':data',$v);
+                    }
+                    $this->oil($v,$xml['FromUserName']);
+                }
+            }
+        }
 
         // 普通消息 回复
         if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
