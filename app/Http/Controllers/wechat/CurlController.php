@@ -134,4 +134,23 @@ class CurlController extends Controller
         }
         return $appoil;
     }
+    // 天气
+    public static function weather()
+    {
+        $key = "weather";
+        if(\Cache::has($key)){
+            // 取缓存
+            $weather = \Cache::get($key);
+        }else{
+            $appkey = "46229";
+            $sign = "1415b1373fb75b12b3869c734ff9f611";
+            $url = "http://api.k780.com/?app=weather.future&weaid=1&appkey=" . $appkey . "&sign=" . $sign . "&format=json";
+            $data = self::curlget($url);
+            $ther = json_decode($data, true, JSON_UNESCAPED_UNICODE);
+            \Cache::put($key,$ther['result'],86400);
+            $weather = $ther['result'];
+        }
+        return $weather;
+
+    }
 }

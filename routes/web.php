@@ -169,12 +169,13 @@ Route::group(['middleware'=>['CheckLogin']],function(){
     Route::any('/wechat/add','wechat\KaoController@add');
     Route::any('/wechat/user','wechat\KaoController@user');
     Route::any('/wechat/code','wechat\KaoController@code');
+    Route::any('/wechat/yyy','wechat\KaoController@yyy');
 Route::group(['middleware'=>['Checkwechat']],function(){
 });
     Route::any('/wechat/getinfo','wechat\KaoController@getinfo');
     Route::any('/wechat/message','wechat\KaoController@message');
     Route::any('/wechat/dan','wechat\KaoController@dan');
-
+//=========================================================
     // 验 签
     Route::any('/wechat/sdk','wechat\QrcodeController@sdk');
 
@@ -185,3 +186,5 @@ Route::group(['middleware'=>['Checkwechat']],function(){
     Route::any('/wechat/update_cousre','wechat\CourseController@update_cousre');
 
 
+    //天气
+    Route::any('/wechat/weather','wechat\WeatherController@weather');
