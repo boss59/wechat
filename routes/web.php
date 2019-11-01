@@ -186,5 +186,6 @@ Route::group(['middleware'=>['Checkwechat']],function(){
     Route::any('/wechat/update_cousre','wechat\CourseController@update_cousre');
 
 
-    //天气
-    Route::any('/wechat/weather','wechat\WeatherController@weather');
+    Route::any('/wechat/vv','wechat\CourseController@vv');
+
+

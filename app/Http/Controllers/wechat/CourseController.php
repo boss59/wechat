@@ -72,4 +72,10 @@ class CourseController extends Controller
             }
         }
     }
+    public function vv()
+    {
+
+        $res=CurlController::city();
+        dd($res);
+    }
 }

@@ -153,4 +153,14 @@ class CurlController extends Controller
         }
         return $weather;
     }
+    // 获取城市
+    public static function city()
+    {
+        $appkey = "46229";
+        $sign = "1415b1373fb75b12b3869c734ff9f611";
+        $city=file_get_contents('http://api.k780.com/?app=weather.city&appkey='.$appkey.'&sign='.$sign.'&format=json');
+        $ci=json_decode($city,1);
+
+        return $ci;
+    }
 }
