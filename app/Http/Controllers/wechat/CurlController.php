@@ -138,6 +138,7 @@ class CurlController extends Controller
     public static function weather()
     {
         $key = "weather";
+        \Cache::forget($key);
         if(\Cache::has($key)){
             // 取缓存
             $weather = \Cache::get($key);
@@ -151,6 +152,5 @@ class CurlController extends Controller
             $weather = $ther['result'];
         }
         return $weather;
-
     }
 }

@@ -159,6 +159,16 @@ class EventController extends Controller
             }
         }
 
+        // 天气 回复
+        if($xml['MsgType'] == 'text' && strpos($xml['Content'],'天气')){
+            // 获取 一周天气信息
+            $res = CurlController::weather();
+            $msg =[];
+            foreach ($res as $k =>$v){
+                $msg[]= "天气提醒\n".$v['days']."\n城市：".$v['citynm']."\n星期：".$v['week']."\n温度：".$v['temperature']."\n天气：".$v['weather']."";
+            }
+            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
+        }
         // 普通消息 回复
         if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
             echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[有需要服务的吗？]]></Content></xml>";
@@ -213,6 +223,5 @@ class EventController extends Controller
         $arr = json_encode($data, JSON_UNESCAPED_UNICODE);
         $fans = CurlController::curlpost($url,$arr);
         $data = json_decode($fans, true, JSON_UNESCAPED_UNICODE);
-
     }
 }
