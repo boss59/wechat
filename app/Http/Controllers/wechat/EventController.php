@@ -161,13 +161,25 @@ class EventController extends Controller
 
         // 天气 回复
         if($xml['MsgType'] == 'text' && strpos($xml['Content'],'天气')){
-            // 获取 一周天气信息
-            $res = CurlController::weather();
-            $msg =[];
-            foreach ($res as $k =>$v){
-                $msg[]= "天气提醒\n".$v['days']."\n城市：".$v['citynm']."\n星期：".$v['week']."\n温度：".$v['temperature']."\n天气：".$v['weather']."";
+            $name = mb_substr($xml['Content'],0,-2);
+            // 获取城市
+            $city = CurlController::city();
+            $arr = [];
+            foreach($city['result']['datas'] as $k=>$v){
+                if($v['citynm'] == $name){
+                    // 获取 一周天气信息
+                    $appkey = "46229";
+                    $sign = "1415b1373fb75b12b3869c734ff9f611";
+                    $url = "http://api.k780.com/?app=weather.future&weaid=".$v['weaid']."&appkey=" . $appkey . "&sign=" . $sign . "&format=json";
+                    $data = CurlController::curlget($url);
+                    $res =json_decode($data,1);
+                    foreach($res['result'] as $k=>$v){
+                        $msg=$v['days'].",".$v['citynm'].",".$v['week'].",".$v['temperature'].",".$v['weather']."\n";
+                        $arr[] = $msg;
+                    }
+                    echo "<xml><ToUserName><![CDATA[" . $xml['FromUserName'] . "]]></ToUserName><FromUserName><![CDATA[" . $xml['ToUserName'] . "]]></FromUserName><CreateTime>" . time() . "</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[" . $arr['0'].$arr['1'].$arr['2'].$arr['3'].$arr['4'].$arr['5'].$arr['6']. "]]></Content></xml>";die;
+                }
             }
-            echo "<xml><ToUserName><![CDATA[".$xml['FromUserName']."]]></ToUserName><FromUserName><![CDATA[".$xml['ToUserName']."]]></FromUserName><CreateTime>".time()."</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[".$msg."]]></Content></xml>";
         }
         // 普通消息 回复
         if ($xml['MsgType'] == 'text' && $xml['Content'] == '1'){
