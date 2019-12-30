@@ -79,7 +79,7 @@ $(document).on('click','.all',function(){
   $('.box').prop('checked',$(this).prop('checked'));
   // 获取 商品总价
   getTotal();
-})
+});
 // =====================  删除 ========================
   $(document).on("click",".wy-dele",function() {
     var _this = $(this);
